@@ -1,0 +1,14 @@
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="user_input">
+    <input type="submit" value="Submit">
+</form>
+<div>
+    {% if user_input %}
+        <p>{{ user_input }}</p>
+    {% endif %}
+</div>

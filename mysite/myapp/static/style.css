@@ -1,0 +1,39 @@
+form {
+    margin: 20px auto;
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+div {
+    margin: 20px auto;
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
