@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Ticker Input</title>
+</head>
+<body>
+    <h1>Enter Stock Ticker</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="ticker" placeholder="Enter Ticker">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

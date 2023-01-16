@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Data</title>
+</head>
+<body>
+    <h1> Stock Data for {{ ticker }} </h1>
+    <img src="{{ graph }}" alt="graph">
+    <table>
+        <thead>
+            <tr>
+                {% for column in df.head.columns %}
+                <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in df.itertuples %}
+            <tr>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- <img src="{{ graph }}" alt="graph"> -->
+</body>
+</html>
