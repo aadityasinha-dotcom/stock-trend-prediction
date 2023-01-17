@@ -2,10 +2,18 @@ import './App.css';
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import ClosingGraph from "./components/ClosingGraph";
+import styled from "styled-components";
 
 export default function App() {
 
   const [value, setValue] = useState('');
+  const [showDiv, setShowDiv] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+  const [adjacentUrl, setAdjacentUrl] = useState('');
+  const [dailyReturnUrl, setDailyReturnUrl] = useState('');
+  const [movingUrl, setMovingUrl] = useState('');
+  const [closingPriceUrl, setClosingPriceUrl] = useState('');
 
 
   const handleChange = (event) => {
@@ -19,7 +27,13 @@ export default function App() {
           ticker: term,
         },
       });
-      console.log(response);
+      const url = "http://localhost:8000/";
+      setImageUrl(url+"media/close/"+response.data.file_name);
+      setAdjacentUrl(url+"media/adj_close/"+response.data.file_name);
+      setDailyReturnUrl(url+"media/daily_return/"+response.data.file_name);
+      setMovingUrl(url+"media/ma/"+response.data.file_name);
+      setClosingPriceUrl(url+"media/closing_price_history/"+response.data.file_name);
+
     } catch (error) {
       console.log(error);
     }
@@ -39,23 +53,35 @@ export default function App() {
   }, []);*/
 
   
-    return (
+  return (
       <div className="App">
-        <h1>Hello hi</h1>
-        <div className="ui input">
-          <input type="text" placeholder="Enter" value={value} 
-          onChange={(event) => handleChange(event)} />
+        <h1>Stock Prediction</h1>
+        <div className="ui form">
+          <div className="field">
+            <div className="ui input">
+              <input type="text" placeholder="Enter" value={value} 
+              onChange={(event) => handleChange(event)} />
+            </div>
+            <button className="ui secondary button" 
+              onClick={() => {onTermSubmit(value); setShowDiv(!showDiv);}}>
+              Okay
+            </button>
+          </div>
         </div>
-        <p>{value}</p>
-        <button className="ui secondary button" 
-          onClick={(value) => onTermSubmit(value)}>
-          Okay
-        </button>
-        <div>
-          <img src="http://localhost:8000/static/stock.png" 
-          alt="Closing Graph"/>
+        <div id="myDiv" className={showDiv ? "show" : "hide"}>
+          <div className="ui grid">
+            <h1>Closing Price</h1>
+            <ClosingGraph imageUrl={imageUrl}/>
+            <h1>Daily Return</h1>
+            <ClosingGraph imageUrl={adjacentUrl}/>
+            <ClosingGraph imageUrl={dailyReturnUrl}/>
+            <h1>Moving Average</h1>
+            <ClosingGraph imageUrl={movingUrl}/>
+            <h1>Closing Price</h1>
+            <ClosingGraph imageUrl={closingPriceUrl}/>
+            </div>
         </div>
       </div>
-    );
-}
+  );
+};
 
