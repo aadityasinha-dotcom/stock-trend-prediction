@@ -38,20 +38,6 @@ export default function App() {
       console.log(error);
     }
   };
-
-  /* useEffect(() => {
-    async function getAllStudents(){
-      try {
-        const students = await axios.get("http://127.0.0.1:8000/api/student")
-        console.log(students.data);
-        setStudents(students.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getAllStudents();
-  }, []);*/
-
   
   return (
       <div className="App">

@@ -35,17 +35,20 @@ def moving_average(df, ticker):
     plt.title("Moving average for 10, 20, 50 days")
     plt.savefig(f'media/ma/{ticker}.png')
 
+def histogram(daily_return, ticker):
+    hist = daily_return.hist(bins=50)
+    plt.xlabel('Daily Return')
+    plt.ylabel('Counts')
+    plt.title('Daily Return')
+    plt.savefig(f'media/daily_return/{ticker}.png')
+
 def adjacent_close(df, ticker):
     daily_return = df['Adj Close'].pct_change()
     plt.plot(daily_return, linestyle='--', marker='o')
     plt.title("Daily Return")
     plt.savefig(f'media/adj_close/{ticker}.png')
     # Daily Return
-    hist = daily_return.hist(bins=50)
-    plt.xlabel('Daily Return')
-    plt.ylabel('Counts')
-    plt.title("Daily Return")
-    plt.savefig(f'media/daily_return/{ticker}.png')
+    histogram(daily_return, ticker)
 
 def closing_price_history(df, ticker):
     plt.figure(figsize=(16,6))
