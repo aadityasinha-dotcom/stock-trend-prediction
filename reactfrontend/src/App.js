@@ -22,7 +22,7 @@ export default function App() {
 
   const onTermSubmit = async (term) => {
     try {
-      const response = await axios.get("/https://stock-trend-prediction-backend-production.up.railway.app/api/stock", {
+      const response = await axios.get("https://stock-trend-prediction-backend-production.up.railway.app/api/stock", {
         params: {
           ticker: term,
         },
