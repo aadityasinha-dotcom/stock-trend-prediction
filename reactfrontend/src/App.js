@@ -33,6 +33,7 @@ export default function App() {
       setDailyReturnUrl(url+"media/daily_return/"+response.data.file_name);
       setMovingUrl(url+"media/ma/"+response.data.file_name);
       setClosingPriceUrl(url+"media/closing_price_history/"+response.data.file_name);
+      console.log(url+"media/close/"+response.data.file_name);
 
     } catch (error) {
       console.log(error);
