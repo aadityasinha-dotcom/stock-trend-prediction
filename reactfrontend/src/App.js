@@ -22,12 +22,12 @@ export default function App() {
 
   const onTermSubmit = async (term) => {
     try {
-      const response = await axios.get("http://localhost:8000/api/stock", {
+      const response = await axios.get("/https://stock-trend-prediction-backend-production.up.railway.app/api/stock", {
         params: {
           ticker: term,
         },
       });
-      const url = "http://localhost:8000/";
+      const url = "https://stock-trend-prediction-backend-production.up.railway.app/";
       setImageUrl(url+"media/close/"+response.data.file_name);
       setAdjacentUrl(url+"media/adj_close/"+response.data.file_name);
       setDailyReturnUrl(url+"media/daily_return/"+response.data.file_name);
