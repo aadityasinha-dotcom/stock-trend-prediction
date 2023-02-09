@@ -4,8 +4,8 @@ const ClosingGraph = ({ imageUrl }) => {
 
 
   return (
-    <div>
-      <img className="ui medium bordered image" src={imageUrl} />
+    <div className="ui container">
+      <img className="ui bordered image" src={imageUrl} />
     </div>
   );
 };

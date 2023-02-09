@@ -4,8 +4,15 @@ import { useState } from "react";
 import axios from "axios";
 import ClosingGraph from "./components/ClosingGraph";
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
 
 export default function App() {
+
+  const navigate = useNavigate();
+
+  const nav = () => {
+    navigate("/results");
+  };
 
   const [value, setValue] = useState('');
   const [showDiv, setShowDiv] = useState(false);
@@ -33,7 +40,7 @@ export default function App() {
       setDailyReturnUrl(url+"media/daily_return/"+response.data.file_name);
       setMovingUrl(url+"media/ma/"+response.data.file_name);
       setClosingPriceUrl(url+"media/closing_price_history/"+response.data.file_name);
-      console.log(url+"media/close/"+response.data.file_name);
+      // console.log(url+"media/close/"+response.data.file_name);
 
     } catch (error) {
       console.log(error);
@@ -41,8 +48,9 @@ export default function App() {
   };
   
   return (
-      <div className="App">
-        <h1>Stock Prediction</h1>
+    <div className="App">
+      <div className="ui raised very padded text container segment">
+        <h2 className="ui center aligned icon header">Stock Prediction</h2>
         <div className="ui form">
           <div className="field">
             <div className="ui input">
@@ -55,20 +63,23 @@ export default function App() {
             </button>
           </div>
         </div>
-        <div id="myDiv" className={showDiv ? "show" : "hide"}>
-          <div className="ui grid">
-            <h1>Closing Price</h1>
-            <ClosingGraph imageUrl={imageUrl}/>
-            <h1>Daily Return</h1>
-            <ClosingGraph imageUrl={adjacentUrl}/>
-            <ClosingGraph imageUrl={dailyReturnUrl}/>
-            <h1>Moving Average</h1>
-            <ClosingGraph imageUrl={movingUrl}/>
-            <h1>Closing Price</h1>
-            <ClosingGraph imageUrl={closingPriceUrl}/>
-            </div>
+      </div>
+      <div className="ui container">
+        <div className="ui internally celled grid">
+          <div id="myDiv" className={showDiv ? "show" : "hide"}>
+              <h1>Closing Price</h1>
+              <ClosingGraph imageUrl={imageUrl}/>
+              <h1>Daily Return</h1>
+              <ClosingGraph imageUrl={adjacentUrl}/>
+              <ClosingGraph imageUrl={dailyReturnUrl}/>
+              <h1>Moving Average</h1>
+              <ClosingGraph imageUrl={movingUrl}/>
+              <h1>Closing Price</h1>
+              <ClosingGraph imageUrl={closingPriceUrl}/>
+          </div>
         </div>
       </div>
+    </div>
   );
 };
 

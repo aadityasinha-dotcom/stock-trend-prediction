@@ -15,10 +15,10 @@
 }
 
 #myDiv.hide {
-    display: none;
+  display: none;
 }
 #myDiv.show {
-    display: block;
+  display: block;
 }
 
 .App-header {
