@@ -21,6 +21,7 @@ export default function App() {
   const [dailyReturnUrl, setDailyReturnUrl] = useState('');
   const [movingUrl, setMovingUrl] = useState('');
   const [closingPriceUrl, setClosingPriceUrl] = useState('');
+  const [predictionUrl, setPredictionUrl] = useState('');
 
 
   const handleChange = (event) => {
@@ -40,7 +41,8 @@ export default function App() {
       setDailyReturnUrl(url+"media/daily_return/"+response.data.file_name);
       setMovingUrl(url+"media/ma/"+response.data.file_name);
       setClosingPriceUrl(url+"media/closing_price_history/"+response.data.file_name);
-      // console.log(url+"media/close/"+response.data.file_name);
+      setPredictionUrl(url+"media/prediction/"+response.data.file_name);
+      console.log(url+"media/prediction/"+response.data.file_name);
 
     } catch (error) {
       console.log(error);
@@ -67,6 +69,8 @@ export default function App() {
       <div className="ui container">
         <div className="ui internally celled grid">
           <div id="myDiv" className={showDiv ? "show" : "hide"}>
+              <h1>Prediction</h1>
+              <ClosingGraph imageUrl={predictionUrl}/>
               <h1>Closing Price</h1>
               <ClosingGraph imageUrl={imageUrl}/>
               <h1>Daily Return</h1>
